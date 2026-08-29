@@ -1,0 +1,270 @@
+{
+  "generated_at": "2026-08-29T05:40:49.687486+00:00",
+  "dbt_version": "1.12.3",
+  "elapsed_time": 0.8019704818725586,
+  "failed_nodes": 0,
+  "total_nodes": 26,
+  "healthy": true,
+  "results": [
+    {
+      "unique_id": "seed.data_reliability_lab.customers",
+      "name": "customers",
+      "resource_type": "seed",
+      "status": "success",
+      "execution_time": 0.09618687629699707,
+      "message": "INSERT 81",
+      "failures": null,
+      "owner": null
+    },
+    {
+      "unique_id": "seed.data_reliability_lab.orders",
+      "name": "orders",
+      "resource_type": "seed",
+      "status": "success",
+      "execution_time": 0.14109444618225098,
+      "message": "INSERT 600",
+      "failures": null,
+      "owner": null
+    },
+    {
+      "unique_id": "model.data_reliability_lab.stg_customers",
+      "name": "stg_customers",
+      "resource_type": "model",
+      "status": "success",
+      "execution_time": 0.049796342849731445,
+      "message": "OK",
+      "failures": null,
+      "owner": null
+    },
+    {
+      "unique_id": "test.data_reliability_lab.assert_one_active_customer_version",
+      "name": "assert_one_active_customer_version",
+      "resource_type": "test",
+      "status": "pass",
+      "execution_time": 0.07461237907409668,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    },
+    {
+      "unique_id": "test.data_reliability_lab.accepted_values_stg_customers_country__VN__SG__US__AU.5380452aff",
+      "name": "accepted_values_stg_customers_country__VN__SG__US__AU",
+      "resource_type": "test",
+      "status": "pass",
+      "execution_time": 0.0768284797668457,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    },
+    {
+      "unique_id": "test.data_reliability_lab.not_null_stg_customers_customer_id.e2cfb1f9aa",
+      "name": "not_null_stg_customers_customer_id",
+      "resource_type": "test",
+      "status": "pass",
+      "execution_time": 0.0755014419555664,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    },
+    {
+      "unique_id": "model.data_reliability_lab.stg_orders",
+      "name": "stg_orders",
+      "resource_type": "model",
+      "status": "success",
+      "execution_time": 0.08967351913452148,
+      "message": "OK",
+      "failures": null,
+      "owner": null
+    },
+    {
+      "unique_id": "test.data_reliability_lab.not_null_stg_customers_is_active.576275766f",
+      "name": "not_null_stg_customers_is_active",
+      "resource_type": "test",
+      "status": "pass",
+      "execution_time": 0.060205936431884766,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    },
+    {
+      "unique_id": "test.data_reliability_lab.accepted_values_stg_orders_currency__USD__VND.96dc949363",
+      "name": "accepted_values_stg_orders_currency__USD__VND",
+      "resource_type": "test",
+      "status": "pass",
+      "execution_time": 0.05831193923950195,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    },
+    {
+      "unique_id": "test.data_reliability_lab.not_null_stg_orders_amount_usd.66d6e9342d",
+      "name": "not_null_stg_orders_amount_usd",
+      "resource_type": "test",
+      "status": "pass",
+      "execution_time": 0.05789327621459961,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    },
+    {
+      "unique_id": "test.data_reliability_lab.accepted_values_stg_orders_status__pending__completed__refunded__cancelled.1c37006287",
+      "name": "accepted_values_stg_orders_status__pending__completed__refunded__cancelled",
+      "resource_type": "test",
+      "status": "pass",
+      "execution_time": 0.06126546859741211,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    },
+    {
+      "unique_id": "test.data_reliability_lab.not_null_stg_orders_created_at.9740113cf3",
+      "name": "not_null_stg_orders_created_at",
+      "resource_type": "test",
+      "status": "pass",
+      "execution_time": 0.05321335792541504,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    },
+    {
+      "unique_id": "test.data_reliability_lab.not_null_stg_orders_customer_id.af79d5e4b5",
+      "name": "not_null_stg_orders_customer_id",
+      "resource_type": "test",
+      "status": "pass",
+      "execution_time": 0.04826068878173828,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    },
+    {
+      "unique_id": "test.data_reliability_lab.not_null_stg_orders_order_date.2177a3e8bb",
+      "name": "not_null_stg_orders_order_date",
+      "resource_type": "test",
+      "status": "pass",
+      "execution_time": 0.03730964660644531,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    },
+    {
+      "unique_id": "test.data_reliability_lab.not_null_stg_orders_order_id.81cfe2fe64",
+      "name": "not_null_stg_orders_order_id",
+      "resource_type": "test",
+      "status": "pass",
+      "execution_time": 0.03716135025024414,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    },
+    {
+      "unique_id": "test.data_reliability_lab.unique_stg_orders_order_id.e3b841c71a",
+      "name": "unique_stg_orders_order_id",
+      "resource_type": "test",
+      "status": "pass",
+      "execution_time": 0.01985311508178711,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    },
+    {
+      "unique_id": "test.data_reliability_lab.relationships_stg_orders_customer_id__customer_id__ref_stg_customers_.430bf21500",
+      "name": "relationships_stg_orders_customer_id__customer_id__ref_stg_customers_",
+      "resource_type": "test",
+      "status": "pass",
+      "execution_time": 0.039346933364868164,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    },
+    {
+      "unique_id": "unit_test.data_reliability_lab.fct_daily_revenue.duplicate_active_customer_does_not_inflate_revenue",
+      "name": "duplicate_active_customer_does_not_inflate_revenue",
+      "resource_type": "unit_test",
+      "status": "pass",
+      "execution_time": 0.10298275947570801,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    },
+    {
+      "unique_id": "unit_test.data_reliability_lab.fct_daily_revenue.completed_orders_sum_to_expected_revenue",
+      "name": "completed_orders_sum_to_expected_revenue",
+      "resource_type": "unit_test",
+      "status": "pass",
+      "execution_time": 0.04731035232543945,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    },
+    {
+      "unique_id": "model.data_reliability_lab.fct_daily_revenue",
+      "name": "fct_daily_revenue",
+      "resource_type": "model",
+      "status": "success",
+      "execution_time": 0.06570553779602051,
+      "message": "OK",
+      "failures": null,
+      "owner": null
+    },
+    {
+      "unique_id": "test.data_reliability_lab.assert_revenue_implies_completed_orders",
+      "name": "assert_revenue_implies_completed_orders",
+      "resource_type": "test",
+      "status": "pass",
+      "execution_time": 0.04568076133728027,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    },
+    {
+      "unique_id": "test.data_reliability_lab.not_null_fct_daily_revenue_completed_order_rows.3b3fbd5280",
+      "name": "not_null_fct_daily_revenue_completed_order_rows",
+      "resource_type": "test",
+      "status": "pass",
+      "execution_time": 0.047446250915527344,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    },
+    {
+      "unique_id": "test.data_reliability_lab.assert_nonnegative_revenue",
+      "name": "assert_nonnegative_revenue",
+      "resource_type": "test",
+      "status": "pass",
+      "execution_time": 0.04749727249145508,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    },
+    {
+      "unique_id": "test.data_reliability_lab.not_null_fct_daily_revenue_daily_revenue.55ddd3262a",
+      "name": "not_null_fct_daily_revenue_daily_revenue",
+      "resource_type": "test",
+      "status": "pass",
+      "execution_time": 0.04715704917907715,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    },
+    {
+      "unique_id": "test.data_reliability_lab.unique_fct_daily_revenue_order_date.8ba2134790",
+      "name": "unique_fct_daily_revenue_order_date",
+      "resource_type": "test",
+      "status": "pass",
+      "execution_time": 0.0292203426361084,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    },
+    {
+      "unique_id": "test.data_reliability_lab.not_null_fct_daily_revenue_order_date.b774bf86f4",
+      "name": "not_null_fct_daily_revenue_order_date",
+      "resource_type": "test",
+      "status": "pass",
+      "execution_time": 0.019630908966064453,
+      "message": null,
+      "failures": 0,
+      "owner": null
+    }
+  ]
+}

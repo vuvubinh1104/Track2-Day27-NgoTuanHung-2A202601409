@@ -1,0 +1,118 @@
+{
+  "engine": "soda_yaml_pandas_fallback",
+  "failed": 0,
+  "issues": [
+    {
+      "check": "schema",
+      "column": null,
+      "passed": true,
+      "details": "missing_columns=[]",
+      "severity": "critical",
+      "source": "soda_contract"
+    },
+    {
+      "check": "rows_exist",
+      "column": null,
+      "passed": true,
+      "details": "row_count=600",
+      "severity": "critical",
+      "source": "soda_contract"
+    },
+    {
+      "check": "no_missing_values",
+      "column": "order_id",
+      "passed": true,
+      "details": "null_count=0",
+      "severity": "critical",
+      "source": "soda_contract"
+    },
+    {
+      "check": "no_duplicate_values",
+      "column": "order_id",
+      "passed": true,
+      "details": "duplicate_rows=0",
+      "severity": "critical",
+      "source": "soda_contract"
+    },
+    {
+      "check": "no_missing_values",
+      "column": "customer_id",
+      "passed": true,
+      "details": "null_count=0",
+      "severity": "critical",
+      "source": "soda_contract"
+    },
+    {
+      "check": "no_missing_values",
+      "column": "amount",
+      "passed": true,
+      "details": "null_count=0",
+      "severity": "critical",
+      "source": "soda_contract"
+    },
+    {
+      "check": "invalid_count",
+      "column": "amount",
+      "passed": true,
+      "details": "invalid_count=0",
+      "severity": "critical",
+      "source": "soda_contract"
+    },
+    {
+      "check": "no_missing_values",
+      "column": "currency",
+      "passed": true,
+      "details": "null_count=0",
+      "severity": "critical",
+      "source": "soda_contract"
+    },
+    {
+      "check": "invalid_count",
+      "column": "currency",
+      "passed": true,
+      "details": "invalid_count=0",
+      "severity": "critical",
+      "source": "soda_contract"
+    },
+    {
+      "check": "no_missing_values",
+      "column": "status",
+      "passed": true,
+      "details": "null_count=0",
+      "severity": "critical",
+      "source": "soda_contract"
+    },
+    {
+      "check": "invalid_count",
+      "column": "status",
+      "passed": true,
+      "details": "invalid_count=0",
+      "severity": "critical",
+      "source": "soda_contract"
+    },
+    {
+      "check": "no_missing_values",
+      "column": "created_at",
+      "passed": true,
+      "details": "null_count=0",
+      "severity": "critical",
+      "source": "soda_contract"
+    },
+    {
+      "check": "no_missing_values",
+      "column": "updated_at",
+      "passed": true,
+      "details": "null_count=0",
+      "severity": "critical",
+      "source": "soda_contract"
+    },
+    {
+      "check": "freshness_in_minutes",
+      "column": "updated_at",
+      "passed": true,
+      "details": "delay_minutes=8.9; must_be_less_than=30.0",
+      "severity": "warning",
+      "source": "soda_contract"
+    }
+  ]
+}

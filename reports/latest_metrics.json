@@ -1,0 +1,145 @@
+{
+  "timestamp": "2026-08-29T05:40:49.687944+00:00",
+  "orders_rows": 600,
+  "failed_contract_checks": 0,
+  "critical_contract_failures": 0,
+  "pipeline_action": {
+    "action": "allow",
+    "blocked": false,
+    "quarantine": false,
+    "reason": "all_checks_passed"
+  },
+  "quarantine": {
+    "action": "allow",
+    "quarantined_rows": 0,
+    "clean_rows": 600,
+    "path": null
+  },
+  "row_count_anomaly": {
+    "is_anomaly": false,
+    "score": 27.226166541953233,
+    "method": "auto:mad+weekday+relative(same_segment_history+suppressed_segment_spike)",
+    "reason": "history=same_segment_history+suppressed_segment_spike; median=252.500, mad=12.500, threshold=3.5; relative_ratio=2.376 vs median=252.500 (spike); metric=row_count; day_of_week=5",
+    "components": {
+      "mad": {
+        "is_anomaly": true,
+        "score": 18.751099999999997,
+        "method": "mad",
+        "reason": "median=252.500, mad=12.500, threshold=3.5"
+      },
+      "zscore": {
+        "is_anomaly": true,
+        "score": 27.226166541953233,
+        "method": "zscore",
+        "reason": "mean=250.833, std=12.825, threshold=3.0"
+      },
+      "relative": {
+        "is_anomaly": true,
+        "score": 3.1,
+        "reason": "relative_ratio=2.376 vs median=252.500 (spike)"
+      },
+      "raw_mad": {
+        "is_anomaly": false,
+        "score": 0.31741176470588234,
+        "method": "mad",
+        "reason": "median=584.000, mad=34.000, threshold=3.5"
+      },
+      "history_source": "same_segment_history+suppressed_segment_spike",
+      "history_n": 6
+    },
+    "votes": [
+      {
+        "is_anomaly": true,
+        "score": 18.751099999999997,
+        "method": "mad",
+        "reason": "median=252.500, mad=12.500, threshold=3.5"
+      },
+      {
+        "is_anomaly": true,
+        "score": 27.226166541953233,
+        "method": "zscore",
+        "reason": "mean=250.833, std=12.825, threshold=3.0"
+      },
+      {
+        "is_anomaly": true,
+        "score": 3.1,
+        "reason": "relative_ratio=2.376 vs median=252.500 (spike)"
+      }
+    ]
+  },
+  "amount_distribution": {
+    "is_anomaly": true,
+    "score": 11.709962822687856,
+    "method": "hybrid:ks+psi+mean_ratio",
+    "reason": "baseline_mean=70.270, current_mean=66.233, mean_ratio=1.061, median_ratio=1.220, ks=0.602, psi=2.927",
+    "ks": 0.6016666666666667,
+    "psi": 2.927490705671964,
+    "mean_ratio": 1.0609544261668877,
+    "median_ratio": 1.2201214223764094
+  },
+  "freshness_minutes": 9.044429449999999,
+  "freshness_slo": {
+    "target": 0.995,
+    "actual_bad_rate": 0.0,
+    "allowed_bad_rate": 0.0050000000000000044,
+    "burn_rate": 0.0,
+    "remaining_error_budget_fraction": 1.0,
+    "breached": false
+  },
+  "kb_failed_checks": 0,
+  "kb_issues": [],
+  "kb_text_length_signal": {
+    "is_anomaly": false,
+    "score": 0.8974279661016953,
+    "method": "text_length:zscore+mad",
+    "reason": "mean=14.834, std=1.015, threshold=3.0; median=14.815, mad=0.590, threshold=3.5",
+    "metric": "mean_text_length",
+    "current_mean": 15.6
+  },
+  "kb_embedding_signal": {
+    "is_anomaly": false,
+    "score": 0.566901190476187,
+    "method": "embedding_norm:mad+zscore",
+    "reason": "current_mean=1.0118, baseline_mean=1.0071, relative=0.005; median=1.005, mad=0.008, threshold=3.5",
+    "current_mean": 1.0117600000000002,
+    "baseline_mean": 1.0070785714285715,
+    "relative": 0.004648523664631228
+  },
+  "contract_slo": {
+    "target": 0.999,
+    "actual_bad_rate": 0.0,
+    "allowed_bad_rate": 0.0010000000000000009,
+    "burn_rate": 0.0,
+    "remaining_error_budget_fraction": 1.0,
+    "breached": false
+  },
+  "multiwindow_burn": {
+    "short_window_burn": 0.0,
+    "long_window_burn": 0.0,
+    "policy": "sre",
+    "fast_page_rule": "short>=14.4 and long>=6.0",
+    "elevated_page_rule": "short>=6.0 and long>=3.0",
+    "page": false,
+    "severity": "info",
+    "reason": "within_error_budget"
+  },
+  "sample_blast_radius_from_stg_orders": [
+    "fct_daily_revenue",
+    "ceo_revenue_dashboard"
+  ],
+  "column_blast_radius_amount_usd": [
+    "fct_daily_revenue.daily_revenue",
+    "ceo_revenue_dashboard.revenue"
+  ],
+  "kb_blast_radius": [
+    "kb_active_docs",
+    "rag_index",
+    "support_agent"
+  ],
+  "dbt_manifest_nodes": 26,
+  "elementary": {
+    "healthy": true,
+    "failed_nodes": 0,
+    "total_nodes": 26
+  }
+}

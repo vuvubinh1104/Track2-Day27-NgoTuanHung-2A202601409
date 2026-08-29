@@ -1,0 +1,16 @@
+{
+  "produced_at": "2026-08-29T05:40:49+00:00",
+  "events": [
+    "ceo_revenue_dashboard.json",
+    "fct_daily_revenue.json",
+    "kb_active_docs.json",
+    "kb_documents.json",
+    "rag_index.json",
+    "raw_customers.json",
+    "raw_orders.json",
+    "stg_customers.json",
+    "stg_orders.json",
+    "support_agent.json"
+  ],
+  "dataset_count": 10
+}

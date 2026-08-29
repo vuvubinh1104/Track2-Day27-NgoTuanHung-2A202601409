@@ -1,0 +1,46 @@
+# Soda Data Contract for orders.
+# Verified by soda/verify.py (Soda Core when installed, pandas fallback otherwise).
+dataset: orders
+owner: commerce-data
+filter_sql: null
+columns:
+  - name: order_id
+    data_type: integer
+    checks:
+      - type: no_missing_values
+      - type: no_duplicate_values
+  - name: customer_id
+    data_type: varchar
+    checks:
+      - type: no_missing_values
+  - name: amount
+    data_type: double
+    checks:
+      - type: no_missing_values
+      - type: invalid_count
+        valid_min: 0
+  - name: currency
+    data_type: varchar
+    checks:
+      - type: no_missing_values
+      - type: invalid_count
+        valid_values: [USD, VND]
+  - name: status
+    data_type: varchar
+    checks:
+      - type: no_missing_values
+      - type: invalid_count
+        valid_values: [pending, completed, refunded, cancelled]
+  - name: created_at
+    data_type: timestamp
+    checks:
+      - type: no_missing_values
+  - name: updated_at
+    data_type: timestamp
+    checks:
+      - type: no_missing_values
+      - type: freshness_in_minutes
+        must_be_less_than: 30
+checks:
+  - type: rows_exist
+  - type: schema

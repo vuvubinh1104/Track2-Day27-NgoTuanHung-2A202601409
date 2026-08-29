@@ -1,6 +1,8 @@
--- NOTE: This model is intentionally simple. If the customer dimension has more
--- than one active row per customer, the join can inflate revenue without a SQL
--- error. Students should add tests/unit tests that expose this failure mode.
+-- Grain is one row per order_date.
+-- Join active customers at unique customer_id grain so a Type-2 SCD with two
+-- simultaneously-active versions cannot fan-out and inflate revenue.
+-- `not_null` / `unique` on the result would still pass after inflation; the
+-- unit test in unit_tests.yml is what locks the transformation math.
 
 with completed_orders as (
     select *
@@ -8,7 +10,7 @@ with completed_orders as (
     where status = 'completed'
 ),
 active_customers as (
-    select *
+    select distinct customer_id
     from {{ ref('stg_customers') }}
     where is_active = true
 )

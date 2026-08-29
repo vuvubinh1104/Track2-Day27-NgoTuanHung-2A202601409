@@ -1,0 +1,53 @@
+{
+  "eventType": "COMPLETE",
+  "eventTime": "2026-08-29T05:40:49+00:00",
+  "producer": "https://github.com/vinai/data-reliability-game-day",
+  "schemaURL": "https://openlineage.io/spec/2-0-2/OpenLineage.json#/$defs/RunEvent",
+  "run": {
+    "runId": "dc7ec31a-e4c8-42bc-8b5b-3000508e83c0",
+    "facets": {}
+  },
+  "job": {
+    "namespace": "lab.commerce",
+    "name": "rag_index",
+    "facets": {}
+  },
+  "inputs": [
+    {
+      "namespace": "lab.commerce",
+      "name": "kb_active_docs"
+    }
+  ],
+  "outputs": [
+    {
+      "namespace": "lab.commerce",
+      "name": "rag_index",
+      "facets": {
+        "columnLineage": {
+          "fields": {
+            "rag_index.embedding": {
+              "inputFields": [
+                {
+                  "namespace": "lab.commerce",
+                  "name": "kb_active_docs",
+                  "field": "content"
+                }
+              ],
+              "transformationType": "DIRECT"
+            },
+            "support_agent.answer": {
+              "inputFields": [
+                {
+                  "namespace": "lab.commerce",
+                  "name": "rag_index",
+                  "field": "embedding"
+                }
+              ],
+              "transformationType": "DIRECT"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

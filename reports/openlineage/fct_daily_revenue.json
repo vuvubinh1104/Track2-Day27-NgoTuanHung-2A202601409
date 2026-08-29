@@ -1,0 +1,57 @@
+{
+  "eventType": "COMPLETE",
+  "eventTime": "2026-08-29T05:40:49+00:00",
+  "producer": "https://github.com/vinai/data-reliability-game-day",
+  "schemaURL": "https://openlineage.io/spec/2-0-2/OpenLineage.json#/$defs/RunEvent",
+  "run": {
+    "runId": "60ffecb9-a6a9-456f-a2ac-6f0bbfa74f38",
+    "facets": {}
+  },
+  "job": {
+    "namespace": "lab.commerce",
+    "name": "fct_daily_revenue",
+    "facets": {}
+  },
+  "inputs": [
+    {
+      "namespace": "lab.commerce",
+      "name": "stg_orders"
+    },
+    {
+      "namespace": "lab.commerce",
+      "name": "stg_customers"
+    }
+  ],
+  "outputs": [
+    {
+      "namespace": "lab.commerce",
+      "name": "fct_daily_revenue",
+      "facets": {
+        "columnLineage": {
+          "fields": {
+            "fct_daily_revenue.daily_revenue": {
+              "inputFields": [
+                {
+                  "namespace": "lab.commerce",
+                  "name": "stg_orders",
+                  "field": "amount_usd"
+                }
+              ],
+              "transformationType": "DIRECT"
+            },
+            "ceo_revenue_dashboard.revenue": {
+              "inputFields": [
+                {
+                  "namespace": "lab.commerce",
+                  "name": "fct_daily_revenue",
+                  "field": "daily_revenue"
+                }
+              ],
+              "transformationType": "DIRECT"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

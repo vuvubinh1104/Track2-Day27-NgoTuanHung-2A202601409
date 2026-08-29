@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-08-29T05:40:38.889947+00:00",
+  "success": true,
+  "worst_severity": "info",
+  "action": "allow",
+  "failed_expectations": [],
+  "blocked": false,
+  "quarantine": false
+}

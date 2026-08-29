@@ -1,6 +1,17 @@
+"""SLO / error-budget math and Google SRE multi-window burn-rate policy."""
 from __future__ import annotations
 
 from typing import Any
+
+
+# Google SRE Workbook starting point (30-day SLO):
+# page if 14.4x over 1h AND 6x over 6h, or 6x over 6h AND 3x over 3d.
+FAST_PAGE_SHORT = 14.4
+FAST_PAGE_LONG = 6.0
+ELEVATED_PAGE_SHORT = 6.0
+ELEVATED_PAGE_LONG = 3.0
+TICKET_SHORT = 3.0
+TICKET_LONG = 1.0
 
 
 def calculate_slo(target: float, bad_events: int, total_events: int) -> dict[str, Any]:
@@ -35,17 +46,65 @@ def evaluate_multiwindow_burn(
     *,
     short_window_burn: float,
     long_window_burn: float,
-    policy: str = "starter",
+    policy: str = "sre",
 ) -> dict[str, Any]:
-    """TODO(student): implement a real multi-window burn-rate policy.
+    """Page only when BOTH windows confirm a sustained burn.
 
-    Starter intentionally never pages. Hidden evaluation contains cases that
-    require distinguishing sustained fast burn from a transient spike.
+    A short-window spike with a calm long window is treated as transient and
+    does not page. This is the SRE workbook multi-window rule, compressed to
+    the two burn-rate numbers exposed by the stable student API.
     """
-    return {
-        "page": False,
-        "severity": "info",
-        "reason": "starter_policy_not_implemented",
-        "short_window_burn": short_window_burn,
-        "long_window_burn": long_window_burn,
+    short = float(short_window_burn)
+    long = float(long_window_burn)
+    payload = {
+        "short_window_burn": short,
+        "long_window_burn": long,
+        "policy": policy or "sre",
+        "fast_page_rule": f"short>={FAST_PAGE_SHORT} and long>={FAST_PAGE_LONG}",
+        "elevated_page_rule": f"short>={ELEVATED_PAGE_SHORT} and long>={ELEVATED_PAGE_LONG}",
     }
+
+    if short >= FAST_PAGE_SHORT and long >= FAST_PAGE_LONG:
+        payload.update(
+            {
+                "page": True,
+                "severity": "critical",
+                "reason": "sustained_fast_burn",
+            }
+        )
+        return payload
+    if short >= ELEVATED_PAGE_SHORT and long >= ELEVATED_PAGE_LONG:
+        payload.update(
+            {
+                "page": True,
+                "severity": "warning",
+                "reason": "sustained_elevated_burn",
+            }
+        )
+        return payload
+    if short >= FAST_PAGE_SHORT and long < FAST_PAGE_LONG:
+        payload.update(
+            {
+                "page": False,
+                "severity": "info",
+                "reason": "transient_spike",
+            }
+        )
+        return payload
+    if short >= TICKET_SHORT and long >= TICKET_LONG:
+        payload.update(
+            {
+                "page": False,
+                "severity": "warning",
+                "reason": "slow_burn_ticket",
+            }
+        )
+        return payload
+    payload.update(
+        {
+            "page": False,
+            "severity": "info",
+            "reason": "within_error_budget",
+        }
+    )
+    return payload

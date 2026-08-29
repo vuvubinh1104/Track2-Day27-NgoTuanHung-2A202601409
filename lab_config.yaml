@@ -11,9 +11,11 @@ slo:
     threshold_minutes: 60
 
 anomaly:
-  default_method: zscore
+  default_method: auto
   zscore_threshold: 3.0
+  mad_threshold: 3.5
   mean_ratio_threshold: 3.0
+  volume_drop_ratio: 0.5
 
 paths:
   orders: data/incoming/orders.csv

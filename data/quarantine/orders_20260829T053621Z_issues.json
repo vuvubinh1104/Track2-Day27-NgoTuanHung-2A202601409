@@ -1,0 +1,16 @@
+{
+  "dataset": "orders",
+  "action": "block",
+  "failed": [
+    {
+      "check": "unique",
+      "column": "order_id",
+      "severity": "critical",
+      "passed": false,
+      "details": "duplicate_rows=6",
+      "action": "block"
+    }
+  ],
+  "quarantined_rows": 6,
+  "clean_rows": 597
+}

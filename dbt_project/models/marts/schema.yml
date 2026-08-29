@@ -2,11 +2,21 @@ version: 2
 
 models:
   - name: fct_daily_revenue
-    description: Daily completed-order revenue for the CEO dashboard.
+    description: >
+      Daily completed-order revenue for the CEO dashboard.
+      Grain is order_date. Customer join is unique on customer_id so SCD
+      fan-out cannot inflate revenue.
     columns:
       - name: order_date
+        description: Calendar date of completed orders.
+        data_tests:
+          - not_null
+          - unique
+      - name: completed_order_rows
+        description: Number of completed order rows contributing to the day.
         data_tests:
           - not_null
       - name: daily_revenue
+        description: Sum of completed order amounts in USD.
         data_tests:
           - not_null
